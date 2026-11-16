@@ -1,32 +1,17 @@
-﻿bool korProgram = true;
-
-while (korProgram)
+﻿List<Issue> issues = new List<Issue>
 {
-    Console.WriteLine("1 Information");
-    Console.WriteLine("2 Registrera titel");
-    Console.WriteLine("0 Avsluta");
-    Console.Write("Välj ett alternativ: ");
+    new Issue { Title = "Datorn startar inte", Priority = 1 },
+    new Issue { Title = "Skrivaren saknar papper", Priority = 3 },
+    new Issue { Title = "Långsamt Wi-Fi i konferensrummet", Priority = 2 }
+};
 
-    string val = Console.ReadLine() ?? "";
+foreach (Issue issue in issues)
+{
+    Console.WriteLine($"Ärende: {issue.Title} | Prioritet: {issue.Priority}");
+}
 
-    switch (val)
-    {
-        case "1":
-            Console.WriteLine("Detta är en konsolapplikation för att registrera ärenden.");
-            break;
-        case "2":
-            Console.Write("Ange titel: ");
-            string titel = (Console.ReadLine() ?? "").Trim();
-            Console.WriteLine($"Registrerad titel: {titel}");
-            break;
-        case "0":
-            Console.WriteLine("Programmet avslutas.");
-            korProgram = false;
-            break;
-        default:
-            Console.WriteLine("Ogiltigt val, försök igen.");
-            break;
-    }
-
-    Console.WriteLine();
+class Issue
+{
+    public string Title { get; set; } = "";
+    public int Priority { get; set; }
 }
