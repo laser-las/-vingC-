@@ -1,17 +1,37 @@
-﻿List<Issue> issues = new List<Issue>
-{
-    new Issue { Title = "Datorn startar inte", Priority = 1 },
-    new Issue { Title = "Skrivaren saknar papper", Priority = 3 },
-    new Issue { Title = "Långsamt Wi-Fi i konferensrummet", Priority = 2 }
-};
+﻿Console.Write("Ange titel: ");
+string title = Console.ReadLine() ?? "";
 
-foreach (Issue issue in issues)
+Console.Write("Ange prioritet (1-3): ");
+int.TryParse(Console.ReadLine(), out int priority);
+
+try
 {
-    Console.WriteLine($"Ärende: {issue.Title} | Prioritet: {issue.Priority}");
+    Issue arende = new Issue(title, priority);
+    Console.WriteLine($"Ärende skapat: {arende.Title} (Prioritet: {arende.Priority})");
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine($"Kunde inte skapa ärende: {ex.Message}");
 }
 
 class Issue
 {
-    public string Title { get; set; } = "";
-    public int Priority { get; set; }
+    public string Title { get; }
+    public int Priority { get; }
+
+    public Issue(string title, int priority)
+    {
+        if (string.IsNullOrWhiteSpace(title) || title.Trim().Length < 3)
+        {
+            throw new ArgumentException("Titeln måste innehålla minst tre tecken.");
+        }
+
+        if (priority < 1 || priority > 3)
+        {
+            throw new ArgumentException("Prioritet måste vara mellan 1 och 3.");
+        }
+
+        Title = title.Trim();
+        Priority = priority;
+    }
 }
