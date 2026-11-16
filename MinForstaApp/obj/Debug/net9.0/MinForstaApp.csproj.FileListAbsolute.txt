@@ -1,0 +1,14 @@
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\bin\Debug\net9.0\MinForstaApp.exe
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\bin\Debug\net9.0\MinForstaApp.deps.json
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\bin\Debug\net9.0\MinForstaApp.runtimeconfig.json
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\bin\Debug\net9.0\MinForstaApp.dll
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\bin\Debug\net9.0\MinForstaApp.pdb
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\MinForstaApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\MinForstaApp.AssemblyInfoInputs.cache
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\MinForstaApp.AssemblyInfo.cs
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\MinForstaApp.csproj.CoreCompileInputs.cache
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\MinForstaApp.dll
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\refint\MinForstaApp.dll
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\MinForstaApp.pdb
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\MinForstaApp.genruntimeconfig.cache
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\ref\MinForstaApp.dll
