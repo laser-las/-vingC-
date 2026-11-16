@@ -1,0 +1,10 @@
+Exit ticket – svara individuellt
+
+Varför är TryParse lämpligt när användaren skriver ett tal?
+
+Eftersom användare kan råka skriva in bokstäver, symboler eller lämna fältet tomt istället för att
+ange en siffra, förhindrar TryParse att programmet kraschar (kastar ett körtidsfel/exception)
+som vanlig int.Parse() skulle ha gjort.
+Istället testar TryParse säkert om texten går att omvandla till ett tal och returnerar helt enkelt
+true eller false, vilket gör att programmet kan ge ett tydligt felmeddelande och låta
+användaren försöka igen.

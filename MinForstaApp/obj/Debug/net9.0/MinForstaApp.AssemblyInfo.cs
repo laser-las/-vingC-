@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MinForstaApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+696cde3a28e80ed2e31ca77c0c57d407d4b49c49")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1425b7cfeb18f31cc7f794d2e04a1297cf86f24b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MinForstaApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MinForstaApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
