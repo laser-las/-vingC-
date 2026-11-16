@@ -12,3 +12,4 @@ C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\refint\M
 C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\MinForstaApp.pdb
 C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\MinForstaApp.genruntimeconfig.cache
 C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\ref\MinForstaApp.dll
+C:\Users\robin.ostmark\Documents\övingC#\MinForstaApp\obj\Debug\net9.0\MinForstaApp.sourcelink.json
