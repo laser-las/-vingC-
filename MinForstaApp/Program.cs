@@ -1,13 +1,16 @@
-﻿Console.Write("Ange en titel: ");
-string input = Console.ReadLine() ?? "";
+﻿int prioritet;
 
-string titel = input.Trim();
+while (true)
+{
+    Console.Write("Ange prioritet (1-3): ");
+    string input = Console.ReadLine() ?? "";
 
-if (titel.Length >= 3)
-{
-    Console.WriteLine($"Titeln '{titel}' är godkänd!");
+    if (int.TryParse(input, out prioritet) && prioritet >= 1 && prioritet <= 3)
+    {
+        break;
+    }
+
+    Console.WriteLine("Ogiltig prioritet. Du måste ange ett heltal mellan 1 och 3.");
 }
-else
-{
-    Console.WriteLine("Ogiltig titel. Titeln måste innehålla minst tre tecken.");
-}
+
+Console.WriteLine($"Vald prioritet: {prioritet}");
