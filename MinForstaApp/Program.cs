@@ -1,16 +1,32 @@
-﻿int prioritet;
+﻿bool korProgram = true;
 
-while (true)
+while (korProgram)
 {
-    Console.Write("Ange prioritet (1-3): ");
-    string input = Console.ReadLine() ?? "";
+    Console.WriteLine("1 Information");
+    Console.WriteLine("2 Registrera titel");
+    Console.WriteLine("0 Avsluta");
+    Console.Write("Välj ett alternativ: ");
 
-    if (int.TryParse(input, out prioritet) && prioritet >= 1 && prioritet <= 3)
+    string val = Console.ReadLine() ?? "";
+
+    switch (val)
     {
-        break;
+        case "1":
+            Console.WriteLine("Detta är en konsolapplikation för att registrera ärenden.");
+            break;
+        case "2":
+            Console.Write("Ange titel: ");
+            string titel = (Console.ReadLine() ?? "").Trim();
+            Console.WriteLine($"Registrerad titel: {titel}");
+            break;
+        case "0":
+            Console.WriteLine("Programmet avslutas.");
+            korProgram = false;
+            break;
+        default:
+            Console.WriteLine("Ogiltigt val, försök igen.");
+            break;
     }
 
-    Console.WriteLine("Ogiltig prioritet. Du måste ange ett heltal mellan 1 och 3.");
+    Console.WriteLine();
 }
-
-Console.WriteLine($"Vald prioritet: {prioritet}");
