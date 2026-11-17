@@ -1,0 +1,6 @@
+En klass är en mall eller ritning som definierar strukturen och beteendet för en datatyp, medan ett objekt är en konkret instans av denna klass som existerar i minnet. 
+
+Klassen innehåller definitioner av fält, egenskaper och metoder, men tilldelar ingen minnesplats för data förrän en instans skapas.
+Objektet skapas med nyckelordet new och allokerar faktiskt minne på den hanterade heapen för att lagra unika datavärden.
+Man kan skapa många objekt från samma klass, där varje objekt har sin egen stat men delar samma struktur. 
+Exempel: Om Bil är en klass, är var minBil = new Bil(); skapandet av ett specifikt objekt.

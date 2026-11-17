@@ -1,37 +1,80 @@
-﻿Console.Write("Ange titel: ");
-string title = Console.ReadLine() ?? "";
+﻿// Skapar tjänsten via interfacet IIssueService
+IIssueService issueService = new ConsoleLoggingIssueService();
 
-Console.Write("Ange prioritet (1-3): ");
-int.TryParse(Console.ReadLine(), out int priority);
+// Lägger till ett par startärenden så listan inte är helt tom från början (kan tas bort om du vill)
+issueService.AddIssue(new Issue("Datorn startar inte"));
+issueService.AddIssue(new Issue("Nätverksproblem på plan 2"));
 
-try
+bool running = true;
+
+while (running)
 {
-    Issue arende = new Issue(title, priority);
-    Console.WriteLine($"Ärende skapat: {arende.Title} (Prioritet: {arende.Priority})");
-}
-catch (ArgumentException ex)
-{
-    Console.WriteLine($"Kunde inte skapa ärende: {ex.Message}");
-}
+    Console.WriteLine("\n===============================");
+    Console.WriteLine("   ÄRENDEHANTERING (MENY)");
+    Console.WriteLine("===============================");
+    Console.WriteLine("1. Lägg till nytt ärende");
+    Console.WriteLine("2. Markera ett ärende som löst");
+    Console.WriteLine("3. Visa alla ärenden");
+    Console.WriteLine("4. Avsluta");
+    Console.Write("Välj ett alternativ (1-4): ");
 
-class Issue
-{
-    public string Title { get; }
-    public int Priority { get; }
+    string? choice = Console.ReadLine();
+    Console.WriteLine();
 
-    public Issue(string title, int priority)
+    switch (choice)
     {
-        if (string.IsNullOrWhiteSpace(title) || title.Trim().Length < 3)
-        {
-            throw new ArgumentException("Titeln måste innehålla minst tre tecken.");
-        }
+        case "1":
+            Console.Write("Skriv titel på ärendet (minst 3 tecken): ");
+            string? title = Console.ReadLine();
 
-        if (priority < 1 || priority > 3)
-        {
-            throw new ArgumentException("Prioritet måste vara mellan 1 och 3.");
-        }
+            try
+            {
+                // Skapar ett nytt Issue-objekt med det du skrev in och skickar till tjänsten
+                Issue newIssue = new Issue(title ?? "");
+                issueService.AddIssue(newIssue);
+            }
+            catch (ArgumentException ex)
+            {
+                // Fångar felet från Issue-konstruktorn om titeln är för kort
+                Console.WriteLine($"Fel: {ex.Message} Försök igen.");
+            }
+            break;
 
-        Title = title.Trim();
-        Priority = priority;
+        case "2":
+            Console.Write("Skriv exakt titel på ärendet som ska markeras som löst: ");
+            string? resolveTitle = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(resolveTitle))
+            {
+                issueService.ResolveIssue(resolveTitle.Trim());
+            }
+            break;
+
+        case "3":
+            List<Issue> allIssues = issueService.GetAllIssues();
+
+            if (allIssues.Count == 0)
+            {
+                Console.WriteLine("Det finns inga ärenden i listan.");
+            }
+            else
+            {
+                Console.WriteLine("--- Alla ärenden ---");
+                foreach (Issue issue in allIssues)
+                {
+                    string status = issue.IsResolved ? "Löst" : "Pågående";
+                    Console.WriteLine($"Titel: {issue.Title} | Status: {status}");
+                }
+            }
+            break;
+
+        case "4":
+            running = false;
+            Console.WriteLine("Avslutar programmet...");
+            break;
+
+        default:
+            Console.WriteLine("Ogiltigt val. Skriv en siffra mellan 1 och 4.");
+            break;
     }
 }
