@@ -1,12 +1,5 @@
-﻿// Skapar tjänsten via interfacet IIssueService
-IIssueService issueService = new ConsoleLoggingIssueService();
-
-// Lägger till ett par startärenden så listan inte är helt tom från början (kan tas bort om du vill)
-issueService.AddIssue(new Issue("Datorn startar inte"));
-issueService.AddIssue(new Issue("Nätverksproblem på plan 2"));
-
+﻿List<Issue> issues = new List<Issue>();
 bool running = true;
-
 while (running)
 {
     Console.WriteLine("\n===============================");
@@ -31,7 +24,7 @@ while (running)
             {
                 // Skapar ett nytt Issue-objekt med det du skrev in och skickar till tjänsten
                 Issue newIssue = new Issue(title ?? "");
-                issueService.AddIssue(newIssue);
+                issues.Add(newIssue);
             }
             catch (ArgumentException ex)
             {
@@ -46,21 +39,51 @@ while (running)
 
             if (!string.IsNullOrWhiteSpace(resolveTitle))
             {
-                issueService.ResolveIssue(resolveTitle.Trim());
+                Issue? issue = issues.FirstOrDefault(i => i.Title == resolveTitle.Trim());
+                issue?.Resolve();
             }
             break;
 
         case "3":
-            List<Issue> allIssues = issueService.GetAllIssues();
 
-            if (allIssues.Count == 0)
+            if (issues.Count == 0)
             {
                 Console.WriteLine("Det finns inga ärenden i listan.");
             }
             else
             {
+                Console.Write("Vill du ha korta eller långa beskrivningar av ärendena? (kort/lång): ");
+                string? detailChoice = Console.ReadLine()?.ToLower();
+                if (detailChoice == "kort")
+                {
+                    ShortIssueService shortService = new ShortIssueService();
+                    foreach (Issue issue in issues)
+                    {
+                        string issueInfo = shortService.ShowIssue(issue);
+                        Console.WriteLine(issueInfo);
+                    }
+                }
+                else if (detailChoice == "lång")
+                {
+                    DetailedIssueService detailedService = new DetailedIssueService();
+                    foreach (Issue issue in issues)
+                    {
+                        string issueInfo = detailedService.ShowIssue(issue);
+                        Console.WriteLine(issueInfo);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Ogiltigt val. Visar korta beskrivningar som standard.");
+                    ShortIssueService shortService = new ShortIssueService();
+                    foreach (Issue issue in issues)
+                    {
+                        string issueInfo = shortService.ShowIssue(issue);
+                        Console.WriteLine(issueInfo);
+                    }
+                }
                 Console.WriteLine("--- Alla ärenden ---");
-                foreach (Issue issue in allIssues)
+                foreach (Issue issue in issues)
                 {
                     string status = issue.IsResolved ? "Löst" : "Pågående";
                     Console.WriteLine($"Titel: {issue.Title} | Status: {status}");
